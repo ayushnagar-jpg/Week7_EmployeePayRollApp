@@ -1,5 +1,6 @@
 package org.example.employeepayroll.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.employeepayroll.dto.EmployeeDTO;
 import org.example.employeepayroll.exception.EmployeeNotFoundException;
 import org.example.employeepayroll.model.Employee;
@@ -8,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImp implements EmployeeService {
@@ -17,6 +18,8 @@ public class EmployeeServiceImp implements EmployeeService {
 
     @Override
     public Employee createEmployee(EmployeeDTO employeeDTO) {
+        log.info("Creating employee: {}", employeeDTO);
+
         Employee employee = new Employee();
         employee.setName(employeeDTO.getName());
         employee.setDepartment(employeeDTO.getDepartment());
